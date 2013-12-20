@@ -5,7 +5,7 @@ Author: Charlie Vollmer,  charlesv@rams.colostate.edu
 Theoretical concepts obtained from Rabiner, 1989.
 """
 
-import collections
+
 import numpy, pylab, time, copy
 from numpy import random as rand
 from numpy import linalg
@@ -309,7 +309,7 @@ def viterbi( hmm, Obs, scaling=True ):
             Psi[ :,t ] = nus.argmax(1)
         
     # Calculate State Sequence, Q*:
-    Q_star = collections.deque([ numpy.argmax( Delta[ :,T-1 ] ) ])
+    Q_star = [ numpy.argmax( Delta[ :,T-1 ] ) ]
     for t in reversed( xrange( T-1 ) ) :
         Q_star.insert( 0, Psi[ Q_star[ 0 ],t+1 ] )
 
